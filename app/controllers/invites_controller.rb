@@ -6,7 +6,7 @@ class InvitesController < ApplicationController
       redirect_to @corral
       return
     end
-    if CorralMember.where(corral_id: @corral.id, user_id: @user.id).count > 0
+    if CorralMember.where(corral_id: @corral.id, user_id: current_user).count > 0
       redirect_to @corral
       return
     end
