@@ -10,7 +10,7 @@ class InvitesController < ApplicationController
       redirect_to @corral
       return
     end
-    if current_user.belongs_to_corral(@corral.id)
+    if current_user.belongs_to_corralIMORTAL(@corral.id)
       @corral_invite = CorralInvite.new
       @corral_invite.corral_id = @corral.id
       @corral_invite.user_id = @user.id
@@ -24,7 +24,7 @@ class InvitesController < ApplicationController
     @corral_invite = CorralInvite.where(corral_id: @corral.id, user_id: current_user.id).first
     @corral_invite.destroy
     @corral_invite.save
-    if !current_user.belongs_to_corral(@corral.id)
+    if !current_user.belongs_to_corralIMORTAL(@corral.id)
       @corral_member = CorralMember.new
       @corral_member.corral_id = @corral.id
       @corral_member.user_id = current_user.id

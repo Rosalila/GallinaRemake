@@ -26,7 +26,7 @@ class ReviewedsController < ApplicationController
   def create
     @reviewed = Reviewed.new(reviewed_params)
 
-    if !current_user.belongs_to_corral(@reviewed.gallina.id)
+    if !current_user.belongs_to_corralIMORTAL(@reviewed.gallina.id)
       redirect_to "/"
       return
     end

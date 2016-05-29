@@ -9,7 +9,7 @@ class ReviewsController < ApplicationController
     reviewed_id = params[:reviewed_id]
     @gallina = Gallina.find_by_id(params[:gallina_id])
 
-    if !current_user.belongs_to_corral(@gallina.corral.id)
+    if !current_user.belongs_to_corralIMORTAL(@gallina.corral.id)
       redirect_to @gallina
       return
     end
