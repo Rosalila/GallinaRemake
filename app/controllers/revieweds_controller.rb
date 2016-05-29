@@ -26,39 +26,43 @@ class ReviewedsController < ApplicationController
   def create
     @reviewed = Reviewed.new(reviewed_params)
 
-    respond_to do |format|
-      if @reviewed.save
-        format.html { redirect_to @reviewed, notice: 'Reviewed was successfully created.' }
-        format.json { render :show, status: :created, location: @reviewed }
-      else
-        format.html { render :new }
-        format.json { render json: @reviewed.errors, status: :unprocessable_entity }
-      end
+    if !current_user.belongs_to_corral(@reviewed.gallina.id)
+      redirect_to "/"
+      return
+    end
+
+    if @reviewed.save
+      redirect_to @reviewed.gallina
+    else
+      redirect_to "/"
     end
   end
 
   # PATCH/PUT /revieweds/1
   # PATCH/PUT /revieweds/1.json
   def update
-    respond_to do |format|
-      if @reviewed.update(reviewed_params)
-        format.html { redirect_to @reviewed, notice: 'Reviewed was successfully updated.' }
-        format.json { render :show, status: :ok, location: @reviewed }
-      else
-        format.html { render :edit }
-        format.json { render json: @reviewed.errors, status: :unprocessable_entity }
-      end
+    if !current_user.belongs_to_corral(@reviewed.gallina.id)
+      redirect_to "/"
+      return
+    end
+
+    if @reviewed.update(reviewed_params)
+      redirect_to @reviewed.gallina
+    else
+      redirect_to "/"
     end
   end
 
   # DELETE /revieweds/1
   # DELETE /revieweds/1.json
   def destroy
-    @reviewed.destroy
-    respond_to do |format|
-      format.html { redirect_to revieweds_url, notice: 'Reviewed was successfully destroyed.' }
-      format.json { head :no_content }
+    if !current_user.belongs_to_corral(@reviewed.gallina.id)
+      redirect_to "/"
+      return
     end
+
+    @reviewed.destroy
+    redirect_to "/"
   end
 
   private
