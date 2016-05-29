@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   get 'home/index'
 
   root 'home#index'
+  post 'log_in' => 'sessions#log_in'
+  get 'users' => 'home#users'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
