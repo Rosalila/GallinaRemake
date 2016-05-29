@@ -31,4 +31,26 @@
       </table>
     </div>
   </div>
+  <div class="col-sm-12 col-sm-offset-0 col-md-12 col-md-offset-0 main">
+    <h2 class="sub-header">My Gallinas</h2>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Corral</th>
+            <th>Description</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% current_user.gallinas.each do |gallina| %>
+            <tr>
+              <td><%=link_to gallina.name, gallina %></td>
+              <td><%= gallina.description %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 <% end %>
