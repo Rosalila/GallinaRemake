@@ -13,6 +13,19 @@
   </div>
 </form>
 
+<h2>My invites</h2>
+<% current_user.corral_invites.each do |corral_invite| %>
+  <p><%= corral_invite.corral.name %><p>
+  <form action="/accept" accept-charset="UTF-8" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="corral_id" value="<%= corral_invite.corral.id %>">
+    <div class="actions">
+      <input type="submit" name="commit" value="Update Metric">
+    </div>
+  </form>
+<% end %>
+
+
 
 <p><%=session['email']%></p>
 <p><%=session['id']%></p>

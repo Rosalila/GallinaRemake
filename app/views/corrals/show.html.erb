@@ -27,5 +27,24 @@
   <% end %>
 </ul>
 
+<h2>Invites</h2>
+<ul>
+  <% @corral.corral_invites.each do |corral_invite| %>
+    <li><%= corral_invite.user.email %></li>
+  <% end %>
+</ul>
+
+<form action="/invite" accept-charset="UTF-8" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="corral_id" value="<%= @corral.id %>">
+  <div class="field">
+    <label for="user_email">User email</label><br>
+    <input type="text" name="user_email" id="metric_name">
+  </div>
+  <div class="actions">
+    <input type="submit" name="commit" value="Update Metric">
+  </div>
+</form>
+
 <%= link_to 'Edit', edit_corral_path(@corral) %> |
 <%= link_to 'Back', corrals_path %>
