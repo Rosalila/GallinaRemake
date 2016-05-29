@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   root 'home#index'
   post 'log_in' => 'sessions#log_in'
+  post 'sign_up' => 'sessions#sign_up'
   post 'log_out' => 'sessions#log_out'
   post 'invite' => 'invites#invite'
   post 'accept' => 'invites#accept'
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
   get 'users' => 'home#users'
   get 'review_form' => 'reviews#review_form'
   get 'sessions/log_in_form' => 'sessions#log_in_form'
+  get 'sessions/sign_up_form' => 'sessions#sign_up_form'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
