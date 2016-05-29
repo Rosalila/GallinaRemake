@@ -8,7 +8,16 @@
 </head>
 <body>
 
-You are logged in as <%= session["email"] %>
+<p>You are logged in as <%= session["email"] %></p>
+<a href="/corrals">Corrals</a>
+<a href="/">Home</a>
+<a href="/sessions/log_in_form">Log in</a>
+<form action="/log_out" accept-charset="UTF-8" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <div class="actions">
+    <input type="submit" name="commit" value="Log out">
+  </div>
+</form>
 
 <%= yield %>
 

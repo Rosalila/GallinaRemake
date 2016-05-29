@@ -2,6 +2,14 @@ class InvitesController < ApplicationController
   def invite
     @corral = Corral.find_by_id(params[:corral_id])
     @user = User.find_by_email(params[:user_email])
+    if CorralInvite.where(corral_id: @corral.id, user_id: @user.id).count > 0
+      redirect_to @corral
+      return
+    end
+    if CorralMember.where(corral_id: @corral.id, user_id: @user.id).count > 0
+      redirect_to @corral
+      return
+    end
     if current_user.belongs_to_corral(@corral.id)
       @corral_invite = CorralInvite.new
       @corral_invite.corral_id = @corral.id

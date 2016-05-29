@@ -24,4 +24,15 @@ class SessionsController < ApplicationController
     session['id'] = @user.id
     redirect_to '/'
   end
+
+  def log_out
+    session['email'] = nil
+    session['kusukin_id'] = nil
+    session['authentication_token'] = nil
+    session['id'] = nil
+    redirect_to '/'
+  end
+
+  def log_in_form
+  end
 end
