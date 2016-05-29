@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-  skip_before_action :verify_authenticity_token
   def log_in
     email = params["email"]
     password = params["password"]
@@ -22,6 +21,7 @@ class SessionsController < ApplicationController
       @user.kusukin_id = session['kusukin_id']
       @user.save
     end
+    session['id'] = @user.id
     redirect_to '/'
   end
 end
