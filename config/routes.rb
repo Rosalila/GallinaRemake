@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :revieweds
   resources :gallinas
   resources :questions
   resources :metrics

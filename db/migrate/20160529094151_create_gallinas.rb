@@ -4,6 +4,7 @@ class CreateGallinas < ActiveRecord::Migration
       t.string :name
       t.string :image
       t.text :description
+      t.integer :corral_id
 
       t.timestamps null: false
     end

@@ -2,12 +2,8 @@
 
 one:
   name: MyString
-  image: MyString
-  description: MyText
-  corral_id: 1
+  gallina_id: 1
 
 two:
   name: MyString
-  image: MyString
-  description: MyText
-  corral_id: 1
+  gallina_id: 1

@@ -8,6 +8,7 @@
       <th>Name</th>
       <th>Image</th>
       <th>Description</th>
+      <th>Corral</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,6 +19,7 @@
         <td><%= gallina.name %></td>
         <td><%= gallina.image %></td>
         <td><%= gallina.description %></td>
+        <td><%= gallina.corral_id %></td>
         <td><%= link_to 'Show', gallina %></td>
         <td><%= link_to 'Edit', edit_gallina_path(gallina) %></td>
         <td><%= link_to 'Destroy', gallina, method: :delete, data: { confirm: 'Are you sure?' } %></td>

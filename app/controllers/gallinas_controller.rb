@@ -26,39 +26,43 @@ class GallinasController < ApplicationController
   def create
     @gallina = Gallina.new(gallina_params)
 
-    respond_to do |format|
-      if @gallina.save
-        format.html { redirect_to @gallina, notice: 'Gallina was successfully created.' }
-        format.json { render :show, status: :created, location: @gallina }
-      else
-        format.html { render :new }
-        format.json { render json: @gallina.errors, status: :unprocessable_entity }
-      end
+    if !current_user.belongs_to_corral(@gallina.corral.id)
+      redirect_to "/"
+      return
+    end
+
+    if @gallina.save
+      redirect_to @gallina.corral
+    else
+      redirect_to "/"
     end
   end
 
   # PATCH/PUT /gallinas/1
   # PATCH/PUT /gallinas/1.json
   def update
-    respond_to do |format|
-      if @gallina.update(gallina_params)
-        format.html { redirect_to @gallina, notice: 'Gallina was successfully updated.' }
-        format.json { render :show, status: :ok, location: @gallina }
-      else
-        format.html { render :edit }
-        format.json { render json: @gallina.errors, status: :unprocessable_entity }
-      end
+    if !current_user.belongs_to_corral(@gallina.corral.id)
+      redirect_to "/"
+      return
+    end
+
+    if @gallina.update(gallina_params)
+      redirect_to @gallina.corral
+    else
+      redirect_to "/"
     end
   end
 
   # DELETE /gallinas/1
   # DELETE /gallinas/1.json
   def destroy
-    @gallina.destroy
-    respond_to do |format|
-      format.html { redirect_to gallinas_url, notice: 'Gallina was successfully destroyed.' }
-      format.json { head :no_content }
+    if !current_user.belongs_to_corral(@gallina.corral.id)
+      redirect_to "/"
+      return
     end
+
+    @gallina.destroy
+    redirect_to "/"
   end
 
   private
@@ -69,6 +73,6 @@ class GallinasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def gallina_params
-      params.require(:gallina).permit(:name, :image, :description)
+      params.require(:gallina).permit(:name, :image, :description, :corral_id)
     end
 end
