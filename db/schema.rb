@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160529080142) do
+ActiveRecord::Schema.define(version: 20160529093953) do
 
   create_table "corral_invites", force: :cascade do |t|
     t.integer  "corral_id"
@@ -36,6 +36,14 @@ ActiveRecord::Schema.define(version: 20160529080142) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "gallinas", force: :cascade do |t|
+    t.string   "name"
+    t.string   "image"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "metric_types", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -50,6 +58,22 @@ ActiveRecord::Schema.define(version: 20160529080142) do
     t.integer  "metric_type_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+  end
+
+  create_table "question_types", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string   "sentence"
+    t.string   "wanted"
+    t.string   "not_wanted"
+    t.integer  "metric_id"
+    t.integer  "question_type_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :gallinas
+  resources :questions
   resources :metrics
   resources :corrals
   get 'home/index'

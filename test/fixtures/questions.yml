@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sentence: MyString
+  wanted: MyString
+  not_wanted: MyString
+  metric_id: 1
+  question_type_id: 1
+
+two:
+  sentence: MyString
+  wanted: MyString
+  not_wanted: MyString
+  metric_id: 1
+  question_type_id: 1

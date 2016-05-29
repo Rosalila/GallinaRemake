@@ -7,3 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 MetricType.create(name: '+')
 MetricType.create(name: '*')
+QuestionType.create(name: 'fine')
+QuestionType.create(name: 'finer')
+QuestionType.create(name: 'finest')

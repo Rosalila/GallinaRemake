@@ -1,0 +1,44 @@
+<h2>Questions</h2>
+
+<ul>
+  <% @metric.questions.each do |question| %>
+    <li><a href="/questions/<%=question.id%>"><%= question.sentence %></a></li>
+  <% end %>
+</ul>
+
+<% @question = Question.new %>
+
+<%= form_for(@question) do |f| %>
+  <% if @question.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
+
+      <ul>
+      <% @question.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :metric_id, :value => @metric.id %>
+  <div class="field">
+    <%= f.label :sentence %><br>
+    <%= f.text_field :sentence %>
+  </div>
+  <div class="field">
+    <%= f.label :wanted %><br>
+    <%= f.text_field :wanted %>
+  </div>
+  <div class="field">
+    <%= f.label :not_wanted %><br>
+    <%= f.text_field :not_wanted %>
+  </div>
+  <div class="field">
+    <%= f.label :question_type_id %><br>
+    <%= f.collection_select(:question_type_id, QuestionType.all, :id, :name) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
