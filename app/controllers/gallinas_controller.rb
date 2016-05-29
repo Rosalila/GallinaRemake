@@ -10,6 +10,10 @@ class GallinasController < ApplicationController
   # GET /gallinas/1
   # GET /gallinas/1.json
   def show
+    @revieweds=@gallina.revieweds
+    @questions=@gallina.corral.questions
+    @metrics=@gallina.corral.metrics
+    @users=@gallina.corral.users
   end
 
   # GET /gallinas/new

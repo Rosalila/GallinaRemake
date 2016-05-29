@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  layout 'sessions'
   def log_in
     email = params["email"]
     password = params["password"]

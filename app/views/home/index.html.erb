@@ -1,13 +1,34 @@
 <% if current_user %>
-  <h2>My invites</h2>
-  <% current_user.corral_invites.each do |corral_invite| %>
-    <p>You have been invited to: <b><%= corral_invite.corral.name %></b><p>
-    <form action="/accept" accept-charset="UTF-8" method="post">
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-      <input type="hidden" name="corral_id" value="<%= corral_invite.corral.id %>">
-      <div class="actions">
-        <input type="submit" name="commit" value="Accept invite">
-      </div>
-    </form>
-  <% end %>
+  <div class="col-sm-12 col-sm-offset-0 col-md-12 col-md-offset-0 main">
+    <h2 class="sub-header">My invites</h2>
+    <p>You have been invited to the following corrals</p>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Corral</th>
+            <th>Description</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% current_user.corral_invites.each do |corral_invite| %>
+            <tr>
+              <td><%=corral_invite.corral.name%></td>
+              <td><%=corral_invite.corral.description%></td>
+              <td>
+                <form action="/accept" accept-charset="UTF-8" method="post">
+                  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                  <input type="hidden" name="corral_id" value="<%= corral_invite.corral.id %>">
+                  <div class="actions">
+                    <input type="submit" name="commit" value="Accept invite">
+                  </div>
+                </form>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 <% end %>
