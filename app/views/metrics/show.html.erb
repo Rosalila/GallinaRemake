@@ -1,9 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @metric.name %>
-</p>
+<div class="col-sm-12 col-sm-offset-0 col-md-12 col-md-offset-0 main">
+<h1><%= @metric.name %></h1>
 
 <p>
   <strong>Description:</strong>
@@ -17,15 +15,17 @@
 
 <p>
   <strong>Corral:</strong>
-  <%= @metric.corral_id %>
+  <%= link_to @metric.corral.name, @metric.corral %>
 </p>
 
 <p>
   <strong>Metric type:</strong>
-  <%= @metric.metric_type %>
+  <%= @metric.metric_type.name %>
 </p>
 
 <%= render 'questions' %>
 
 <%= link_to 'Edit', edit_metric_path(@metric) %> |
 <%= link_to 'Back', metrics_path %>
+
+</div>

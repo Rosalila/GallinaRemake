@@ -1,9 +1,8 @@
+<div class="col-sm-12 col-sm-offset-0 col-md-12 col-md-offset-0 main">
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Sentence:</strong>
-  <%= @question.sentence %>
-</p>
+<h1><%= @question.sentence %></h1>
 
 <p>
   <strong>Wanted:</strong>
@@ -17,13 +16,15 @@
 
 <p>
   <strong>Metric:</strong>
-  <%= @question.metric_id %>
+  <%= link_to @question.metric.name, @question.metric %>
 </p>
 
 <p>
   <strong>Question type:</strong>
-  <%= @question.question_type_id %>
+  <%= @question.question_type.name %>
 </p>
 
 <%= link_to 'Edit', edit_question_path(@question) %> |
 <%= link_to 'Back', questions_path %>
+
+</div>

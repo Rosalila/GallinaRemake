@@ -1,9 +1,8 @@
+<div class="col-sm-12 col-sm-offset-0 col-md-12 col-md-offset-0 main">
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @gallina.name %>
-</p>
+<h1><%= @gallina.name %></h1>
 
 <p>
   <strong>Image:</strong>
@@ -17,7 +16,7 @@
 
 <p>
   <strong>Corral:</strong>
-  <%= @gallina.corral_id %>
+  <%= link_to @gallina.corral.name, @gallina.corral %>
 </p>
 
 <%= render 'revieweds' %>
@@ -26,3 +25,5 @@
 
 <%= link_to 'Edit', edit_gallina_path(@gallina) %> |
 <%= link_to 'Back', gallinas_path %>
+
+</div>

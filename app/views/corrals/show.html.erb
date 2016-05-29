@@ -1,35 +1,35 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @corral.name %>
-</p>
+<div class="col-sm-12 col-sm-offset-0 col-md-12 col-md-offset-0 main" align="center">
+  <h1><%= @corral.name %></h1>
+  <p>
+    <strong>Image:</strong>
+    <%= @corral.image %>
+  </p>
 
-<p>
-  <strong>Image:</strong>
-  <%= @corral.image %>
-</p>
+  <p>
+    <strong>Description:</strong>
+    <%= @corral.description %>
+  </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @corral.description %>
-</p>
+  <p>
+    <strong>Agreement:</strong>
+    <%= @corral.agreement %>
+  </p>
+</div>
 
-<p>
-  <strong>Agreement:</strong>
-  <%= @corral.agreement %>
-</p>
-
-<h2>Users</h2>
-<ul>
-  <% @corral.users.each do |user| %>
-    <li><%= user.email %></li>
-  <% end %>
-</ul>
-
+<div class="col-sm-4 col-md-4 main">
 <%= render 'invites' %>
+</div>
+
+<div class="col-sm-4 col-md-4 main">
 <%= render 'metrics' %>
+</div>
+<div class="col-sm-4 col-md-4 main">
 <%= render 'gallinas' %>
+</div>
 
 <%= link_to 'Edit', edit_corral_path(@corral) %> |
 <%= link_to 'Back', corrals_path %>
+
+</div>

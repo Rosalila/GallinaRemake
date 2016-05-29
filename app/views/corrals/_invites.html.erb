@@ -1,4 +1,10 @@
-<h2>Invites</h2>
+<h2 class="sub-header">Users</h2>
+<ul>
+  <% @corral.users.each do |user| %>
+    <li><%= user.email %></li>
+  <% end %>
+</ul>
+<h2 class="sub-header">Invites</h2>
 <ul>
   <% @corral.corral_invites.each do |corral_invite| %>
     <li><%= corral_invite.user.email %></li>

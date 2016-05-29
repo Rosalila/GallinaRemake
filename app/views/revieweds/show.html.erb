@@ -1,14 +1,15 @@
+<div class="col-sm-12 col-sm-offset-0 col-md-12 col-md-offset-0 main">
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @reviewed.name %>
-</p>
+<h1><%= @reviewed.name %></h1>
 
 <p>
   <strong>Gallina:</strong>
-  <%= @reviewed.gallina_id %>
+  <%= link_to @reviewed.gallina.name, @reviewed.gallina %>
 </p>
 
 <%= link_to 'Edit', edit_reviewed_path(@reviewed) %> |
 <%= link_to 'Back', revieweds_path %>
+
+</div>
