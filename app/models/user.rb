@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :corral_members
   has_many :corral_invites
+  has_many :reviews
   has_many :corrals, through: :corral_members
 
   def belongs_to_corral corral_id

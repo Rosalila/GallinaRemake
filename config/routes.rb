@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   post 'log_out' => 'sessions#log_out'
   post 'invite' => 'invites#invite'
   post 'accept' => 'invites#accept'
+  post 'review' => 'reviews#review'
   get 'users' => 'home#users'
+  get 'review_form' => 'reviews#review_form'
   get 'sessions/log_in_form' => 'sessions#log_in_form'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,0 +1,53 @@
+<h2>Metrics</h2>
+<hr/>
+<%=form_tag "/review", method: :post do%>
+<input name="gallina_id" value="<%=@gallina.id%>" type="hidden"/>
+<input name="reviewed_id" value="<%=@reviewed.id%>" type="hidden"/>
+<% @gallina.corral.metrics.each do |metric| %>
+
+  <b>
+    <%= metric.name %>
+  </b>
+  <i>
+    <%= metric.description %>
+  </i>
+  (weight: <%= metric.weight %>)
+  <br>
+
+  <ul>
+    <% metric.questions.each do |question| %>
+      <div id="panel-review" class="panel panel-success">
+        <div class="panel-heading">
+          <%= question.sentence %>
+        </div>
+        <div class="panel-body">        
+          <!--|  |-->
+          <table>
+            <tbody>
+              <tr>
+                <td id="columna_lateral" rowspan="7">
+                  <p><%= question.not_wanted %></p>
+                </td>
+                <td>
+                  <% 11.times do |v| %>
+                    <td>
+                      <i><%=v%></i></br>
+                      <%= radio_button_tag "questions[#{question.id}]", v %>
+                    </td>
+                  <% end %>
+                </td>
+                <td id="columna_lateral" rowspan="7">
+                  <p><%= question.wanted %></p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    <% end %>
+  </ul>
+
+<% end %>
+<button type="submit" class="btn btn-primary"><%=t('Save')%></button>
+<% end %>
+</div>

@@ -1,7 +1,7 @@
 <h2>Revieweds</h2>
 <ul>
   <% @gallina.revieweds.each do |reviewed| %>
-    <li><a href="/revieweds/<%=reviewed.id%>"><%= reviewed.name %></a></li>
+    <li><a href="/revieweds/<%=reviewed.id%>"><%= reviewed.name %></a> <a href="/review_form?reviewed_id=<%=reviewed.id%>">review</a></li>
   <% end %>
 </ul>
 
