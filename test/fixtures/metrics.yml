@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  weight: 1
+  corral_id: 1
+  metric_type: 1
+
+two:
+  name: MyString
+  description: MyText
+  weight: 1
+  corral_id: 1
+  metric_type: 1

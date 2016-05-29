@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160529062937) do
+ActiveRecord::Schema.define(version: 20160529080142) do
 
   create_table "corral_invites", force: :cascade do |t|
     t.integer  "corral_id"
@@ -34,6 +34,22 @@ ActiveRecord::Schema.define(version: 20160529062937) do
     t.text     "agreement"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "metric_types", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "metrics", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "weight"
+    t.integer  "corral_id"
+    t.integer  "metric_type_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "users", force: :cascade do |t|
