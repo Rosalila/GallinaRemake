@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
     #    return true
     #  end
     #end
-    return false
+    return true
   end
 
   def belongs_to_corralIMORTAL corral_id
