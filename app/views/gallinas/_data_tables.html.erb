@@ -2,15 +2,13 @@
 
 <% @revieweds.each do |reviewed| %>
   <%@reviewed = reviewed%>
-  <% @scores=[] %>
   <h3><%= reviewed.name %></h3>
   <% @metrics.each do |metric| %>
     <%@metric = metric%>
     <h4><%=metric.name%></h4>
+    <% @scores=[] %>
     <%= render 'metric_table' %>
+    <h4>Total</h4>
+    <%= @scores.reduce(:+).to_f / @scores.size %>
   <% end %>
-  <h4>Total</h4>
-  <%= @scores.reduce(:+).to_f / @scores.size %>
 <% end %>
-
-<br><br>
