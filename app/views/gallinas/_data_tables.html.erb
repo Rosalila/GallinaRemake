@@ -1,5 +1,6 @@
 <h2>Reviews</h2>
 
+<%@table_data={}%>
 <% @revieweds.each do |reviewed| %>
   <%@reviewed = reviewed%>
   <h3><%= reviewed.name %></h3>
@@ -9,6 +10,16 @@
     <% @scores=[] %>
     <%= render 'metric_table' %>
     <h4>Total</h4>
-    <%= @scores.reduce(:+).to_f / @scores.size %>
+    <% current_score = @scores.reduce(:+).to_f / @scores.size%>
+    <%= current_score %>
+
+    <% if !@table_data[reviewed.id] %>
+      <% @table_data[reviewed.id]={} %>
+    <% end %>
+    <% @table_data[reviewed.id][metric.id]=current_score %>
+
   <% end %>
+
 <% end %>
+
+<%= render 'graph' %>

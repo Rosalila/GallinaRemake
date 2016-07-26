@@ -1,0 +1,47 @@
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<h2>Graph</h2>
+
+<div id="chart_div" style="width: 900px; height: 300px;"></div>
+
+<script>
+google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(drawDualX);
+
+function drawDualX() {
+      var data = google.visualization.arrayToDataTable([
+        ['Reviewed',
+             <% @metrics.each do |metric| %>
+               '<%=metric.name%>',
+             <%end%>
+        ],
+        <% @revieweds.each do |reviewed| %>
+          ['<%=reviewed.name%>', 
+            <% @metrics.each do |metric| %>
+              <% if @table_data[reviewed.id][metric.id] %>
+                <%= @table_data[reviewed.id][metric.id] %>,
+              <% else %>
+                0,
+              <% end %>
+            <% end %>
+          ],
+        <% end %>
+      ]);
+
+      var options = {
+        chart: {
+          title: 'Revieweds Score',
+          subtitle: 'Score grouped by metrics'
+        },
+        hAxis: {
+          title: 'Total Population'
+        },
+        vAxis: {
+          title: 'City'
+        },
+        bars: 'horizontal'
+      };
+      var material = new google.charts.Bar(document.getElementById('chart_div'));
+      material.draw(data, options);
+    }
+</script>
