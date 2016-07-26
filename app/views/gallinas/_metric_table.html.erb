@@ -1,0 +1,28 @@
+<table border="1">
+  <tr>
+    <td></td>
+    <% @users.each do |user| %>
+      <td>
+        <%= user.email %>
+      </td>
+    <% end %>
+  </tr>
+  <% @metric.questions.each do |question| %>
+    <tr>
+      <td>
+        <%=question.sentence%>
+      </td>
+      <% @users.each do |user| %>
+        <% review = Review.where(reviewed_id: @reviewed.id,question_id: question.id, user_id: user.id).last %>
+        <td>
+          <% if review %>
+            <%= review.score %>
+            <% @scores.push(review.score) %>
+          <% else %>
+             Empty
+          <% end %>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>

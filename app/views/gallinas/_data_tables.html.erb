@@ -1,22 +1,16 @@
 <h2>Reviews</h2>
 
 <% @revieweds.each do |reviewed| %>
-  <% scores=[] %>
+  <%@reviewed = reviewed%>
+  <% @scores=[] %>
   <h3><%= reviewed.name %></h3>
-  <% @questions.each do |question| %>
-    <h4><%= question.sentence %></h4>
-    <% @questions.each do |question| %>
-      <% @users.each do |user| %>
-        <% review = Review.where(reviewed_id: reviewed.id,question_id: question.id, user_id: user.id).last %>
-        <% if review %>
-          <%= review.score %>
-          <% scores.push(review.score) %>
-        <% end %>
-      <% end %>
-    <% end %>
+  <% @metrics.each do |metric| %>
+    <%@metric = metric%>
+    <h4><%=metric.name%></h4>
+    <%= render 'metric_table' %>
   <% end %>
   <h4>Total</h4>
-  <%= scores.reduce(:+).to_f / scores.size %>
+  <%= @scores.reduce(:+).to_f / @scores.size %>
 <% end %>
 
 <br><br>
